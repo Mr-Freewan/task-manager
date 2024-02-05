@@ -5,7 +5,9 @@ description = ""
 authors = ["Yuriy Totyshev <freewan@desktop>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "hexlet_code"}]
+packages = [
+    { include = "task_manager" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"

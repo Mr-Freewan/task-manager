@@ -12,6 +12,8 @@ python = "^3.9"
 django = "4.2.9"
 python-dotenv = "^1.0.1"
 dj-database-url = "^2.1.0"
+flake8 = "^7.0.0"
+gunicorn = "^21.2.0"
 
 
 [build-system]

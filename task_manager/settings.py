@@ -34,7 +34,7 @@ ALLOWED_HOSTS = [
     '0.0.0.0'
 ]
 
-PAAS_HOSTNAME = os.environ.get('SAAS_HOSTNAME')
+PAAS_HOSTNAME = os.environ.get('PAAS_HOSTNAME')
 if PAAS_HOSTNAME:
     ALLOWED_HOSTS.append(PAAS_HOSTNAME)
 

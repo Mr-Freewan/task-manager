@@ -6,32 +6,45 @@
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Fourth project for Hexlet.io">
     <title>Менеджер задач</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-          crossorigin="anonymous">
 </head>
+
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load i18n %}
 
 <body class="min-vh-100 d-flex flex-column">
 
-<header class="flex-shrink-0">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ms-3">
-      <a class="navbar-brand" href="{% url 'start_page' %}">Менеджер задач</a>
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </nav>
-</header>
+<header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="{% url 'start_page' %}" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <span class="fs-4 mb-1">{% translate 'Task manager' %}</span>
+        </a>
 
-<div class="container wrapper flex-grow-1">
-    <h1 class="my-4"></h1>
-    <div class="card">
-      <div class="card-body p-5 bg-light">
-        <div class="display-4">Привет!</div>
-        <p class="lead">Проект пока что находится в разработке</p>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="{% url 'start_page' %}" class="nav-link text-secondary">{% translate 'Users' %}</a></li>
+        </ul>
+
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-light me-2">{% translate 'Login' %}</button>
+          <button type="button" class="btn btn-warning">{% translate 'Sign-up' %}</button>
+        </div>
       </div>
     </div>
-</div>
+  </header>
+
+<main class="container wrapper flex-grow-1">
+    <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">{% translate 'Hi! =)' %}</h1>
+        <p class="lead text-body-secondary">{% translate 'The service is under development now…' %}</p>
+      </div>
+    </div>
+  </section>
+</main>
+
 
 <footer class="border-top py-3 mt-5 flex-shrink-0">
     <div class="container-lg">

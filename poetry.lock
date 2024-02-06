@@ -53,6 +53,20 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-bootstrap5"
+version = "23.4"
+description = "Bootstrap 5 for Django"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "django-bootstrap5-23.4.tar.gz", hash = "sha256:fbf9942a17e1f48b4142e78df9e85afb65e4066a20e38ec7c497d36ae5ef7256"},
+    {file = "django_bootstrap5-23.4-py3-none-any.whl", hash = "sha256:5181bf1e97afae6211e963f28f48d4a90c937a3b036b3f752f52260f0029f3bc"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
 name = "flake8"
 version = "7.0.0"
 description = "the modular source code checker: pep8 pyflakes and co"
@@ -184,7 +198,21 @@ files = [
     {file = "tzdata-2023.4.tar.gz", hash = "sha256:dd54c94f294765522c77399649b4fefd95522479a664a0cec87f41bebc6148c9"},
 ]
 
+[[package]]
+name = "whitenoise"
+version = "6.6.0"
+description = "Radically simplified static file serving for WSGI applications"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "whitenoise-6.6.0-py3-none-any.whl", hash = "sha256:b1f9db9bf67dc183484d760b99f4080185633136a273a03f6436034a41064146"},
+    {file = "whitenoise-6.6.0.tar.gz", hash = "sha256:8998f7370973447fac1e8ef6e8ded2c5209a7b1f67c1012866dbcd09681c3251"},
+]
+
+[package.extras]
+brotli = ["Brotli"]
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "29861d3733bf47000223849a267a2a1501313cebb73aec6cd2f0e531358dba79"
+content-hash = "5f97465d1a356124e19b297ac3ec38921293541f1df0e3a02ca7def32458759a"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-06 05:24+0500\n"
+"POT-Creation-Date: 2024-02-06 06:54+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,26 +20,38 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\task_manager\templates\index.html:22
+#: .\task_manager\templates\index.html:21
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: .\task_manager\templates\index.html:26
+#: .\task_manager\templates\index.html:25
 msgid "Users"
 msgstr "Пользователи"
 
-#: .\task_manager\templates\index.html:30
+#: .\task_manager\templates\index.html:26
+msgid "Statuses"
+msgstr "Статусы"
+
+#: .\task_manager\templates\index.html:27
+msgid "Labels"
+msgstr "Метки"
+
+#: .\task_manager\templates\index.html:28
+msgid "Tasks"
+msgstr "Задачи"
+
+#: .\task_manager\templates\index.html:32
 msgid "Login"
 msgstr "Вход"
 
-#: .\task_manager\templates\index.html:31
+#: .\task_manager\templates\index.html:33
 msgid "Sign-up"
 msgstr "Регистрация"
 
-#: .\task_manager\templates\index.html:41
+#: .\task_manager\templates\index.html:42
 msgid "Hi! =)"
 msgstr "Привет!"
 
-#: .\task_manager\templates\index.html:42
+#: .\task_manager\templates\index.html:43
 msgid "The service is under development now…"
 msgstr "Сейчас сервис находится в разработке…"

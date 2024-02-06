@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru-ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Fourth project for Hexlet.io">
+    <title>Менеджер задач</title>
+</head>
+
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load i18n %}
+
+<body class="min-vh-100 d-flex flex-column">
+
+<header class="p-1 text-bg-dark">
+        {% url 'start_page' as start_page %}
+        {% url 'users_list' as users_list %}
+        {% url 'statuses_list' as statuses_list %}
+        {% url 'labels_list' as labels_list %}
+        {% url 'tasks_list' as tasks_list %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-lg-flex" id="navbarsExample07XL">
+          <a href="{{ start_page }}" class="navbar-brand col-lg-3 me-0 text-white">{% translate 'Task manager' %}</a>
+          <ul class="navbar-nav col-lg-6 justify-content-lg-center">
+            <li class="nav-item">
+              <a class="nav-link{% if users_list in request.path %} active{% endif %}" href="{{ users_list }}">{% translate 'Users' %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link{% if statuses_list in request.path %} active{% endif %}" href="{{ statuses_list }}">{% translate 'Statuses' %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link{% if labels_list in request.path %} active{% endif %}" href="{{ labels_list }}">{% translate 'Labels' %}</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link{% if tasks_list in request.path %} active{% endif %}" href="{{ tasks_list }}">{% translate 'Tasks' %}</a>
+            </li>
+          </ul>
+          <div class="d-lg-flex col-lg-3 justify-content-lg-end">
+            <a href="#" class="btn btn-outline-light me-2" role="button">{% translate 'Login' %}</a>
+            <a href="#" class="btn btn-warning" role="button">{% translate 'Sign-up' %}</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+
+  </header>
+
+<main class="container wrapper flex-grow-1">
+    {% block content %}
+    {% endblock %}
+</main>
+
+
+<footer class="border-top py-3 mt-5 flex-shrink-0">
+    <div class="container-lg">
+        <div class="text-center">
+            <a href="https://github.com/Mr-Freewan" target="_blank">Freewan</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

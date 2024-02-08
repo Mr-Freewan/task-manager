@@ -1,0 +1,17 @@
+{% extends 'base_template.html' %}
+
+{% load i18n %}
+{% load django_bootstrap5 %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-4" align="center">
+    <h3 class="my-4">{% translate 'Delete user' %}</h3>
+    <form method="post">
+        {% csrf_token %}
+        <p>{% trans 'Are you sure you want to delete' %} {{ user.first_name }} {{ user.last_name }} ?</p>
+        <button type="submit" class="btn btn-danger">{% translate 'Yes, delete' %}</button>
+        <a href="{% url 'users_list' %}" class="btn btn-outline-dark px-4 mx-3" role="button">{% translate 'No' %}</a>
+    </form>
+            </div>
+        </div>
+{% endblock %}

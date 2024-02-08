@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-08 04:27+0500\n"
+"POT-Creation-Date: 2024-02-08 16:21+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,10 @@ msgstr "Имя"
 #: .\task_manager\apps\users\forms.py:14
 msgid "Last name"
 msgstr "Фамилия"
+
+#: .\task_manager\mixin.py:12
+msgid "You are not logged in! Please log in."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
 #: .\task_manager\templates\index.html:12
 #: .\task_manager\templates\labels\index.html:12

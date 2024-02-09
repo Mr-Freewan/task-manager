@@ -1,6 +1,9 @@
 install:
 	poetry install
 
+build:
+	./build.sh
+
 dev:
 	poetry run python manage.py runserver
 

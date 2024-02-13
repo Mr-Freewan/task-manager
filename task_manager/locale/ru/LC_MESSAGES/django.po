@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-09 04:39+0500\n"
+"POT-Creation-Date: 2024-02-13 22:37+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,19 +32,19 @@ msgstr "Фамилия"
 msgid "User has been registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: .\task_manager\apps\users\views.py:35
+#: .\task_manager\apps\users\views.py:38
 msgid "User is successfully updated"
 msgstr "Пользователь успешно изменен"
 
-#: .\task_manager\apps\users\views.py:36 .\task_manager\apps\users\views.py:49
+#: .\task_manager\apps\users\views.py:40 .\task_manager\apps\users\views.py:55
 msgid "You have no rights to change another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: .\task_manager\apps\users\views.py:48
+#: .\task_manager\apps\users\views.py:53
 msgid "User is successfully deleted"
 msgstr "Пользователь успешно удален"
 
-#: .\task_manager\apps\users\views.py:51
+#: .\task_manager\apps\users\views.py:58
 msgid "Unable to delete user because it is in use"
 msgstr ""
 
@@ -150,10 +150,22 @@ msgstr "Изменение пользователя"
 msgid "Cancel"
 msgstr "Отмена"
 
-#: .\task_manager\views.py:18
+#: .\task_manager\tests\test_users.py:51
+msgid "Enter a valid username"
+msgstr "Введите правильное имя пользователя"
+
+#: .\task_manager\tests\test_users.py:64
+msgid "This password is too short"
+msgstr "Введённый пароль слишком короткий"
+
+#: .\task_manager\tests\test_users.py:76
+msgid "The two password fields didn’t match."
+msgstr "Введенные пароли не совпадают."
+
+#: .\task_manager\views.py:17
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: .\task_manager\views.py:23 .\task_manager\views.py:26
+#: .\task_manager\views.py:25
 msgid "You are logged out"
 msgstr "Вы разлогинены"

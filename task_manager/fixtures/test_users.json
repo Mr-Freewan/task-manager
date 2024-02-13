@@ -1,0 +1,46 @@
+{
+  "create": {
+    "valid": {
+      "username": "Test_User",
+      "first_name": "Test",
+      "last_name": "User",
+      "password1": "qwerty",
+      "password2": "qwerty"
+    },
+    "invalid_username": {
+      "username": "Test-&ser",
+      "first_name": "Test",
+      "last_name": "User",
+      "password1": "qwerty",
+      "password2": "qwerty"
+    },
+    "invalid_password": {
+      "username": "Test_User",
+      "first_name": "Test",
+      "last_name": "User",
+      "password1": "1",
+      "password2": "1"
+    },
+    "invalid_password_confirm": {
+      "username": "Test_User",
+      "first_name": "Test",
+      "last_name": "User",
+      "password1": "qwerty",
+      "password2": "qwer"
+    }
+  },
+  "update": {
+    "username": "Mother",
+    "first_name": "Padme",
+    "last_name": "Amidala",
+    "password1": "senator",
+    "password2": "senator"
+
+  },
+  "list": {
+    "id": "1",
+    "username": "Vader",
+    "full_name": "Anakin Skywalker",
+    "date_joined": "06.02.2024 21:47"
+  }
+}

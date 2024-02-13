@@ -25,3 +25,6 @@ make_migrations:
 
 migrate:
 	poetry run python manage.py migrate
+
+test:
+	poetry run python manage.py test

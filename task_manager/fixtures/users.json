@@ -1,0 +1,35 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "username": "Vader",
+      "first_name": "Anakin",
+      "last_name": "Skywalker",
+      "password": "sith",
+      "date_joined": "2024-02-06T21:47:03.434Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "username": "Princess",
+      "first_name": "Leia",
+      "last_name": "Organa",
+      "password": "senator",
+      "date_joined": "2024-02-07T21:47:03.434Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "username": "Master",
+      "first_name": "Luke",
+      "last_name": "Skywalker",
+      "password": "jedi",
+      "date_joined": "2024-02-08T21:47:03.434Z"
+    }
+  }
+]

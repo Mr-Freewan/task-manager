@@ -11,7 +11,7 @@ from task_manager.mixins import AuthenticateMixin, PermissionMixin, \
 
 
 class UsersView(ListView):
-    template_name = 'users/index.html'
+    template_name = 'users/list.html'
     model = get_user_model()
     context_object_name = 'users'
 

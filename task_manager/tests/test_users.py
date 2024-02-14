@@ -185,7 +185,7 @@ class TestUsersListView(UserTestCase):
         user = get_user_model().objects.get(pk=1)
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='users/index.html')
+        self.assertTemplateUsed(response, template_name='users/list.html')
         self.assertIn(user, response.context['object_list'])
 
     def test_list_columns(self):

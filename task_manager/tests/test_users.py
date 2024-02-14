@@ -22,14 +22,14 @@ class UserTestCase(TestCase):
 
 class TestUserCreateView(UserTestCase):
 
-    def test_view(self):
+    def test_create_view(self):
         self.client.force_login(self.user_1)
         response = self.client.get(reverse_lazy('user_create'))
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name='users/create.html')
 
-    def test_valid_user(self):
+    def test_create_valid_user(self):
         valid_user = self.test_users['create']['valid']
         response = self.client.post(reverse_lazy('user_create'),
                                     data=valid_user)
@@ -47,7 +47,7 @@ class TestUserCreateView(UserTestCase):
                          _('User has been registered successfully'))
         self.assertEqual(messages[0].level, 25)
 
-    def test_invalid_username(self):
+    def test_create_invalid_username(self):
         invalid_user = self.test_users['create']['invalid_username']
         error_substring = _('Enter a valid username')
         response = self.client.post(reverse_lazy('user_create'),
@@ -61,7 +61,7 @@ class TestUserCreateView(UserTestCase):
         self.assertIn(str(error_substring), errors['username'][0])
         self.assertEqual(get_user_model().objects.count(), self.users_count)
 
-    def test_invalid_password(self):
+    def test_create_invalid_password(self):
         invalid_user = self.test_users['create']['invalid_password']
         error_substring = _('This password is too short')
         response = self.client.post(reverse_lazy('user_create'),
@@ -75,7 +75,7 @@ class TestUserCreateView(UserTestCase):
         self.assertIn(str(error_substring), errors['password2'][0])
         self.assertEqual(get_user_model().objects.count(), self.users_count)
 
-    def test_invalid_password_confirm(self):
+    def test_create_invalid_password_confirm(self):
         invalid_user = self.test_users['create']['invalid_password_confirm']
         error_substring = _('The two password fields didn’t match.')
         response = self.client.post(reverse_lazy('user_create'),
@@ -180,7 +180,7 @@ class TestUserDeleteView(UserTestCase):
 
 
 class TestUsersListView(UserTestCase):
-    def test_unauthorized(self):
+    def test_list_if_unauthorized(self):
         response = self.client.get(reverse_lazy('users_list'))
         user = get_user_model().objects.get(pk=1)
 
@@ -188,19 +188,20 @@ class TestUsersListView(UserTestCase):
         self.assertTemplateUsed(response, template_name='users/index.html')
         self.assertIn(user, response.context['object_list'])
 
-    def test_columns(self):
+    def test_list_columns(self):
         test_user = self.test_users['list']
         response = self.client.get(reverse_lazy('users_list'))
+        page = str(response.content)
 
-        self.assertIn('<tbody>', str(response.content))
-        self.assertInHTML(test_user['id'], str(response.content))
-        self.assertInHTML(test_user['username'], str(response.content))
-        self.assertInHTML(test_user['full_name'], str(response.content))
-        self.assertInHTML(test_user['date_joined'], str(response.content))
+        self.assertInHTML(f"<td>{test_user['id']}</td>", page)
+        self.assertInHTML(f"<td>{test_user['username']}</td>", page)
+        self.assertInHTML(f"<td>{test_user['full_name']}</td>", page)
+        self.assertInHTML(f"<td>{test_user['date_joined']}</td>", page)
 
-    def test_rows(self):
+    def test_list_rows(self):
         response = self.client.get(reverse_lazy('users_list'))
+        page = str(response.content)
 
-        self.assertInHTML(self.user_1.username, str(response.content))
-        self.assertInHTML(self.user_2.username, str(response.content))
-        self.assertInHTML(self.user_3.username, str(response.content))
+        self.assertInHTML(self.user_1.username, page)
+        self.assertInHTML(self.user_2.username, page)
+        self.assertInHTML(self.user_3.username, page)

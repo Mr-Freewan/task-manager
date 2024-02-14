@@ -1,4 +1,5 @@
-from django.urls import path, include
+from django.urls import path
+
 from .views import UsersView, UserCreateView, UserUpdateView, UserDeleteView
 
 urlpatterns = [
@@ -7,5 +8,3 @@ urlpatterns = [
     path('<int:pk>/update/', UserUpdateView.as_view(), name='user_update'),
     path('<int:pk>/delete/', UserDeleteView.as_view(), name='user_delete'),
 ]
-
-

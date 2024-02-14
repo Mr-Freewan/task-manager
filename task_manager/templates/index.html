@@ -5,6 +5,10 @@
 {% bootstrap_javascript %}
 {% load i18n %}
 
+{% block title %}
+<title>{% translate 'Task manager' %}</title>
+{% endblock %}
+
 {% block content %}
 <section class="py-5 text-center container">
     <div class="row py-lg-5">

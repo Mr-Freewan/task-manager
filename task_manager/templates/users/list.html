@@ -5,8 +5,12 @@
 {% bootstrap_javascript %}
 {% load i18n %}
 
+{% block title %}
+<title>{% translate 'Users' %}</title>
+{% endblock %}
+
 {% block content %}
-<h3 class="my-4">Пользователи</h3>
+<h3 class="my-4">{% translate 'Users' %}</h3>
 <table class="table table-hover">
         <thead>
             <tr>
@@ -34,7 +38,7 @@
                 {% endfor %}
             {% else %}
                     <tr>
-                        <td colspan="5" align="center">There is no any registered users</td>
+                        <td colspan="5" align="center">{% translate 'There is no any registered users' %}</td>
                     </tr>
             {% endif %}
         </tbody>

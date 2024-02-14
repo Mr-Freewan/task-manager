@@ -4,7 +4,7 @@ from task_manager.mixins import AuthenticateMixin
 
 
 class TasksView(AuthenticateMixin, TemplateView):
-    template_name = 'tasks/list.html'
+    template_name = 'tasks/index.html'
 
 
 class TaskCreateView(AuthenticateMixin, TemplateView):

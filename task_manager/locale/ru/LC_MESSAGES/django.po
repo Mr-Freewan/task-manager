@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-14 22:55+0500\n"
+"POT-Creation-Date: 2024-02-15 01:08+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,43 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\task_manager\apps\statuses\forms.py:9
+#: .\task_manager\apps\statuses\models.py:8
+#: .\task_manager\templates\statuses\list.html:19
+msgid "Name"
+msgstr "Имя"
+
+#: .\task_manager\apps\statuses\models.py:11
+msgid "Creation date"
+msgstr "Дата создания"
+
+#: .\task_manager\apps\statuses\models.py:15
+msgid "Status"
+msgstr "Статус"
+
+#: .\task_manager\apps\statuses\models.py:16
+#: .\task_manager\templates\navbar.html:23
+#: .\task_manager\templates\statuses\list.html:9
+#: .\task_manager\templates\statuses\list.html:13
+msgid "Statuses"
+msgstr "Статусы"
+
+#: .\task_manager\apps\statuses\views.py:22
+msgid "Status created successfully"
+msgstr "Статус успешно создан"
+
+#: .\task_manager\apps\statuses\views.py:30
+msgid "Status updated successfully"
+msgstr "Статус успешно изменен"
+
+#: .\task_manager\apps\statuses\views.py:38
+msgid "Status deleted successfully"
+msgstr "Статус успешно удален"
+
+#: .\task_manager\apps\statuses\views.py:39
+msgid "Unable to delete status because it is in use"
+msgstr ""
 
 #: .\task_manager\apps\users\forms.py:11
 msgid "First name"
@@ -32,8 +69,8 @@ msgstr "Фамилия"
 msgid "User has been registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: .\task_manager\apps\users\views.py:38 .\task_manager\tests\test_users.py:120
-msgid "User is successfully updated"
+#: .\task_manager\apps\users\views.py:38
+msgid "User has been updated successfully"
 msgstr "Пользователь успешно изменен"
 
 #: .\task_manager\apps\users\views.py:40 .\task_manager\apps\users\views.py:55
@@ -41,8 +78,8 @@ msgstr "Пользователь успешно изменен"
 msgid "You have no rights to change another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: .\task_manager\apps\users\views.py:53 .\task_manager\tests\test_users.py:161
-msgid "User is successfully deleted"
+#: .\task_manager\apps\users\views.py:53
+msgid "User has been deleted successfully"
 msgstr "Пользователь успешно удален"
 
 #: .\task_manager\apps\users\views.py:58
@@ -83,12 +120,6 @@ msgstr "Войти"
 msgid "Users"
 msgstr "Пользователи"
 
-#: .\task_manager\templates\navbar.html:23
-#: .\task_manager\templates\statuses\list.html:9
-#: .\task_manager\templates\statuses\list.html:13
-msgid "Statuses"
-msgstr "Статусы"
-
 #: .\task_manager\templates\navbar.html:26
 msgid "Labels"
 msgstr "Метки"
@@ -107,29 +138,67 @@ msgstr "Выход"
 msgid "Sign up"
 msgstr "Регистрация"
 
-#: .\task_manager\templates\statuses\list.html:18
-msgid "Name"
-msgstr "Имя"
+#: .\task_manager\templates\statuses\create.html:7
+#: .\task_manager\templates\statuses\create.html:13
+#: .\task_manager\templates\statuses\list.html:14
+msgid "Create status"
+msgstr "Создать статус"
 
-#: .\task_manager\templates\statuses\list.html:19
+#: .\task_manager\templates\statuses\create.html:17
+msgid "Create"
+msgstr "Создать"
+
+#: .\task_manager\templates\statuses\create.html:18
+#: .\task_manager\templates\statuses\update.html:18
+#: .\task_manager\templates\users\update.html:18
+msgid "Cancel"
+msgstr "Отмена"
+
+#: .\task_manager\templates\statuses\delete.html:7
+#: .\task_manager\templates\statuses\delete.html:13
+msgid "Delete status"
+msgstr "Удаление статуса"
+
+#: .\task_manager\templates\statuses\delete.html:16
+#: .\task_manager\templates\users\delete.html:16
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: .\task_manager\templates\statuses\delete.html:17
+#: .\task_manager\templates\users\delete.html:17
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: .\task_manager\templates\statuses\delete.html:18
+#: .\task_manager\templates\users\delete.html:18
+msgid "No"
+msgstr "Нет"
+
+#: .\task_manager\templates\statuses\list.html:20
 #: .\task_manager\templates\users\list.html:20
 msgid "Date of creation"
 msgstr "Дата создания"
 
-#: .\task_manager\templates\statuses\list.html:32
+#: .\task_manager\templates\statuses\list.html:33
+#: .\task_manager\templates\statuses\update.html:17
 #: .\task_manager\templates\users\list.html:34
 #: .\task_manager\templates\users\update.html:17
 msgid "Update"
 msgstr "Изменить"
 
-#: .\task_manager\templates\statuses\list.html:33
+#: .\task_manager\templates\statuses\list.html:34
 #: .\task_manager\templates\users\list.html:35
 msgid "Delete"
 msgstr "Удалить"
 
-#: .\task_manager\templates\statuses\list.html:39
+#: .\task_manager\templates\statuses\list.html:40
 msgid "There is no any statuses"
 msgstr "Ни одного статуса не создано"
+
+#: .\task_manager\templates\statuses\update.html:7
+#: .\task_manager\templates\statuses\update.html:13
+msgid "Update status"
+msgstr "Изменение статуса"
 
 #: .\task_manager\templates\users\create.html:17
 msgid "Register"
@@ -139,18 +208,6 @@ msgstr "Зарегистрировать"
 #: .\task_manager\templates\users\delete.html:13
 msgid "Delete user"
 msgstr "Удаление пользователя"
-
-#: .\task_manager\templates\users\delete.html:16
-msgid "Are you sure you want to delete"
-msgstr "Вы уверены, что хотите удалить"
-
-#: .\task_manager\templates\users\delete.html:17
-msgid "Yes, delete"
-msgstr "Да, удалить"
-
-#: .\task_manager\templates\users\delete.html:18
-msgid "No"
-msgstr "Нет"
 
 #: .\task_manager\templates\users\list.html:18
 msgid "User name"
@@ -169,10 +226,6 @@ msgstr "Нет зарегистрированных пользователей"
 msgid "Update user"
 msgstr "Изменение пользователя"
 
-#: .\task_manager\templates\users\update.html:18
-msgid "Cancel"
-msgstr "Отмена"
-
 #: .\task_manager\tests\test_users.py:52
 msgid "Enter a valid username"
 msgstr "Введите правильное имя пользователя"
@@ -184,6 +237,14 @@ msgstr "Введённый пароль слишком короткий"
 #: .\task_manager\tests\test_users.py:80
 msgid "The two password fields didn’t match."
 msgstr "Введенные пароли не совпадают."
+
+#: .\task_manager\tests\test_users.py:120
+msgid "User is successfully updated"
+msgstr "Пользователь успешно изменен"
+
+#: .\task_manager\tests\test_users.py:161
+msgid "User is successfully deleted"
+msgstr "Пользователь успешно удален"
 
 #: .\task_manager\views.py:17
 msgid "You are logged in"

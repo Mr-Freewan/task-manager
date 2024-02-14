@@ -26,10 +26,10 @@
             {% if users %}
                 {% for user in users %}
                     <tr>
-                        <td>{{ user.pk }}</td>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.first_name }} {{ user.last_name }}</td>
-                        <td>{{ user.date_joined|date:"d.m.Y H:i" }}</td>
+                        <td class="align-middle">{{ user.pk }}</td>
+                        <td class="align-middle">{{ user.username }}</td>
+                        <td class="align-middle">{{ user.first_name }} {{ user.last_name }}</td>
+                        <td class="align-middle">{{ user.date_joined|date:"d.m.Y H:i" }}</td>
                         <td align="right">
                             <a href="{% url 'user_update' user.pk %}" class="btn btn-outline-dark btn-sm" role="button">{% translate 'Update' %}</a>
                             <a href="{% url 'user_delete' user.pk %}" class="btn btn-outline-danger btn-sm mx-2" role="button">{% translate 'Delete' %}</a>

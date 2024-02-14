@@ -35,7 +35,7 @@ class UserUpdateView(AuthenticateMixin,
     form_class = UpdateUserForm
 
     success_url = reverse_lazy('users_list')
-    success_message = _('User is successfully updated')
+    success_message = _('User has been updated successfully')
 
     permission_message = _('You have no rights to change another user.')
     permission_url = reverse_lazy('users_list')
@@ -50,7 +50,7 @@ class UserDeleteView(AuthenticateMixin,
     model = get_user_model()
 
     success_url = reverse_lazy('users_list')
-    success_message = _('User is successfully deleted')
+    success_message = _('User has been deleted successfully')
 
     permission_message = _('You have no rights to change another user.')
     permission_url = 'users_list'

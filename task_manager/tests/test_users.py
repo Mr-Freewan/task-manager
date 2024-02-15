@@ -20,6 +20,38 @@ class UserTestCase(TestCase):
         self.users_count = get_user_model().objects.count()
 
 
+class TestUsersListView(UserTestCase):
+    def test_list_if_unauthorized(self):
+        response = self.client.get(reverse_lazy('users_list'))
+        user = get_user_model().objects.get(pk=1)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, template_name='users/list.html')
+        self.assertIn(user, response.context['object_list'])
+
+    def test_list_columns(self):
+        test_user = self.test_users['list']
+        response = self.client.get(reverse_lazy('users_list'))
+        page = str(response.content)
+        tag_class = 'class="align-middle"'
+
+        self.assertInHTML(f'<td {tag_class}>{test_user["id"]}</td>',
+                          page)
+        self.assertInHTML(f'<td {tag_class}>{test_user["username"]}</td>',
+                          page)
+        self.assertInHTML(f'<td  {tag_class}>{test_user["full_name"]}</td>',
+                          page)
+        self.assertInHTML(f'<td  {tag_class}>{test_user["date_joined"]}</td>',
+                          page)
+
+    def test_list_rows(self):
+        response = self.client.get(reverse_lazy('users_list'))
+        page = str(response.content)
+
+        self.assertInHTML(self.user_1.username, page)
+        self.assertInHTML(self.user_2.username, page)
+        self.assertInHTML(self.user_3.username, page)
+
 class TestUserCreateView(UserTestCase):
 
     def test_create_view(self):
@@ -42,7 +74,7 @@ class TestUserCreateView(UserTestCase):
         self.assertEqual(objects.last().username, valid_user['username'])
         self.assertEqual(objects.count(), self.users_count + 1)
 
-        self.assertTrue(messages)
+        self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('User has been registered successfully'))
         self.assertEqual(messages[0].level, 25)
@@ -91,7 +123,7 @@ class TestUserCreateView(UserTestCase):
 
 
 class TestUserUpdateView(UserTestCase):
-    def test_view(self):
+    def test_update_view(self):
         self.client.force_login(self.user_2)
         response = self.client.get(reverse_lazy('user_update',
                                                 kwargs={'pk': 2}))
@@ -115,7 +147,7 @@ class TestUserUpdateView(UserTestCase):
         self.assertEqual(user.first_name, valid_updated_user['first_name'])
         self.assertEqual(user.last_name, valid_updated_user['last_name'])
 
-        self.assertTrue(messages)
+        self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('User is successfully updated'))
         self.assertEqual(messages[0].level, 25)
@@ -124,29 +156,32 @@ class TestUserUpdateView(UserTestCase):
 class TestUserDeleteView(UserTestCase):
     def test_delete_authorized(self):
         self.client.force_login(self.user_3)
-        response = self.client.get(reverse_lazy('user_delete',
-                                                kwargs={'pk': 3}))
+        response = self.client.get(
+            reverse_lazy('user_delete', kwargs={'pk': 3})
+        )
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name='users/delete.html')
 
     def test_delete_unauthorized(self):
-        response = self.client.get(reverse_lazy('user_delete',
-                                                kwargs={'pk': 3}))
+        response = self.client.get(
+            reverse_lazy('user_delete', kwargs={'pk': 3})
+        )
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('login'))
 
-        self.assertTrue(messages)
+        self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('You are not logged in! Please log in.'))
         self.assertEqual(messages[0].level, 40)
 
     def test_delete_self(self):
         self.client.force_login(self.user_3)
-        response = self.client.post(reverse_lazy('user_delete',
-                                                 kwargs={'pk': 3}))
+        response = self.client.post(
+            reverse_lazy('user_delete', kwargs={'pk': 3})
+        )
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
@@ -156,15 +191,16 @@ class TestUserDeleteView(UserTestCase):
         with self.assertRaises(ObjectDoesNotExist):
             get_user_model().objects.get(pk=self.user_3.pk)
 
-        self.assertTrue(messages)
+        self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('User is successfully deleted'))
         self.assertEqual(messages[0].level, 25)
 
     def test_delete_another(self):
         self.client.force_login(self.user_2)
-        response = self.client.post(reverse_lazy('user_delete',
-                                                 kwargs={'pk': 1}))
+        response = self.client.post(
+            reverse_lazy('user_delete', kwargs={'pk': 1})
+        )
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
@@ -173,35 +209,7 @@ class TestUserDeleteView(UserTestCase):
         self.assertEqual(get_user_model().objects.count(), self.users_count)
         self.assertEqual(get_user_model().objects.get(pk=1), self.user_1)
 
-        self.assertTrue(messages)
+        self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,
                          _('You have no rights to change another user.'))
         self.assertEqual(messages[0].level, 40)
-
-
-class TestUsersListView(UserTestCase):
-    def test_list_if_unauthorized(self):
-        response = self.client.get(reverse_lazy('users_list'))
-        user = get_user_model().objects.get(pk=1)
-
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='users/list.html')
-        self.assertIn(user, response.context['object_list'])
-
-    def test_list_columns(self):
-        test_user = self.test_users['list']
-        response = self.client.get(reverse_lazy('users_list'))
-        page = str(response.content)
-
-        self.assertInHTML(f"<td>{test_user['id']}</td>", page)
-        self.assertInHTML(f"<td>{test_user['username']}</td>", page)
-        self.assertInHTML(f"<td>{test_user['full_name']}</td>", page)
-        self.assertInHTML(f"<td>{test_user['date_joined']}</td>", page)
-
-    def test_list_rows(self):
-        response = self.client.get(reverse_lazy('users_list'))
-        page = str(response.content)
-
-        self.assertInHTML(self.user_1.username, page)
-        self.assertInHTML(self.user_2.username, page)
-        self.assertInHTML(self.user_3.username, page)

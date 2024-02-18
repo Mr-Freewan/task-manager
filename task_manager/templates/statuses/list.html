@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-<h3 class="my-4">{% translate 'Statuses' %}</h3>
+<h1 class="my-4">{% translate 'Statuses' %}</h1>
 <a href="{% url 'status_create' %}" class="btn btn-outline-dark mb-4" role="button">{% translate 'Create status' %}</a>
 <table class="table table-hover">
         <thead>
@@ -37,7 +37,7 @@
                 {% endfor %}
             {% else %}
                     <tr>
-                        <td colspan="5" align="center">{% translate 'There is no any statuses' %}</td>
+                        <td colspan="4" align="center">{% translate 'There is no any statuses' %}</td>
                     </tr>
             {% endif %}
         </tbody>

@@ -1,0 +1,23 @@
+{
+  "create": {
+    "name": "Test task",
+    "description": "Some description",
+    "executor": 1,
+    "status": 1
+  },
+  "update": {
+    "name": "Renamed task",
+    "description": "Changed",
+    "executor": 2,
+    "status": 2
+  },
+  "list": {
+    "id": 1,
+    "name": "<a href=\"/tasks/1/\">Destroy the Death Star</a>",
+    "description": "Amid a galactic civil war, Rebel Alliance spies have stolen plans to the tyrannical Galactic Empire's Death Star.",
+    "author": "Anakin Skywalker",
+    "executor": "Luke Skywalker",
+    "status": "In process",
+    "created_at": "06.02.2024 21:47"
+  }
+}

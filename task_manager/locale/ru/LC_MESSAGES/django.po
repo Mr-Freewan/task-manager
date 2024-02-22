@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-19 02:19+0500\n"
+"POT-Creation-Date: 2024-02-23 03:52+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,18 +20,48 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: .\task_manager\apps\labels\forms.py:9 .\task_manager\apps\labels\models.py:8
 #: .\task_manager\apps\statuses\forms.py:9
 #: .\task_manager\apps\statuses\models.py:8
 #: .\task_manager\apps\tasks\models.py:11
+#: .\task_manager\templates\labels\list.html:19
 #: .\task_manager\templates\statuses\list.html:19
 #: .\task_manager\templates\tasks\list.html:28
 msgid "Name"
 msgstr "Имя"
 
+#: .\task_manager\apps\labels\models.py:11
 #: .\task_manager\apps\statuses\models.py:11
 #: .\task_manager\apps\tasks\models.py:28
 msgid "Creation date"
 msgstr "Дата создания"
+
+#: .\task_manager\apps\labels\models.py:15
+msgid "Label"
+msgstr "Метка"
+
+#: .\task_manager\apps\labels\models.py:16
+#: .\task_manager\templates\labels\list.html:9
+#: .\task_manager\templates\labels\list.html:13
+#: .\task_manager\templates\navbar.html:26
+msgid "Labels"
+msgstr "Метки"
+
+#: .\task_manager\apps\labels\views.py:21
+msgid "Label created successfully"
+msgstr "Метка успешно создана"
+
+#: .\task_manager\apps\labels\views.py:29
+msgid "Label updated successfully"
+msgstr "Метка успешно изменена"
+
+#: .\task_manager\apps\labels\views.py:37
+msgid "Label deleted successfully"
+msgstr "Метка успешно удалена"
+
+#: .\task_manager\apps\labels\views.py:39
+msgid "Unable to delete label because it is in use"
+msgstr "Невозможно удалить метку, потому что она используется"
 
 #: .\task_manager\apps\statuses\models.py:15
 #: .\task_manager\apps\tasks\models.py:26
@@ -44,7 +74,6 @@ msgstr "Статус"
 #: .\task_manager\templates\navbar.html:23
 #: .\task_manager\templates\statuses\list.html:9
 #: .\task_manager\templates\statuses\list.html:13
-#: .\task_manager\templates\tasks\list.html:9
 msgid "Statuses"
 msgstr "Статусы"
 
@@ -93,23 +122,24 @@ msgstr "Задачи"
 
 #: .\task_manager\apps\tasks\models.py:32
 #: .\task_manager\templates\navbar.html:29
+#: .\task_manager\templates\tasks\list.html:9
 #: .\task_manager\templates\tasks\list.html:13
 msgid "Tasks"
 msgstr "Задачи"
 
-#: .\task_manager\apps\tasks\views.py:33
+#: .\task_manager\apps\tasks\views.py:32 .\task_manager\tests\test_tasks.py:104
 msgid "Task created successfully"
 msgstr "Задача успешно создана"
 
-#: .\task_manager\apps\tasks\views.py:45
+#: .\task_manager\apps\tasks\views.py:44 .\task_manager\tests\test_tasks.py:144
 msgid "Task updated successfully"
 msgstr "Задача успешно изменена"
 
-#: .\task_manager\apps\tasks\views.py:53
+#: .\task_manager\apps\tasks\views.py:52 .\task_manager\tests\test_tasks.py:196
 msgid "Task deleted successfully"
 msgstr "Задача успешно удалена"
 
-#: .\task_manager\apps\tasks\views.py:54
+#: .\task_manager\apps\tasks\views.py:53 .\task_manager\tests\test_tasks.py:178
 msgid "Only the author of the task can delete it"
 msgstr "Задачу может удалить только ее автор"
 
@@ -121,7 +151,7 @@ msgstr "Имя"
 msgid "Last name"
 msgstr "Фамилия"
 
-#: .\task_manager\apps\users\views.py:24 .\task_manager\tests\test_users.py:79
+#: .\task_manager\apps\users\views.py:24 .\task_manager\tests\test_users.py:80
 msgid "User has been registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
@@ -130,7 +160,7 @@ msgid "User has been updated successfully"
 msgstr "Пользователь успешно изменен"
 
 #: .\task_manager\apps\users\views.py:40 .\task_manager\apps\users\views.py:55
-#: .\task_manager\tests\test_users.py:214
+#: .\task_manager\tests\test_users.py:196
 msgid "You have no rights to change another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
@@ -138,12 +168,12 @@ msgstr "У вас нет прав для изменения другого по�
 msgid "User has been deleted successfully"
 msgstr "Пользователь успешно удален"
 
-#: .\task_manager\apps\users\views.py:58
+#: .\task_manager\apps\users\views.py:58 .\task_manager\tests\test_users.py:212
 msgid "Unable to delete user because it is in use"
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
 #: .\task_manager\mixins.py:12 .\task_manager\tests\test_statuses.py:37
-#: .\task_manager\tests\test_users.py:177
+#: .\task_manager\tests\test_tasks.py:43 .\task_manager\tests\test_users.py:178
 msgid "You are not logged in! Please log in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
@@ -153,13 +183,96 @@ msgid "Task manager"
 msgstr "Менеджер задач"
 
 #: .\task_manager\templates\index.html:16
-#: .\task_manager\templates\labels\index.html:12
 msgid "Hi! =)"
 msgstr "Привет!"
 
 #: .\task_manager\templates\index.html:17
 msgid "The service is under development now…"
 msgstr "Сейчас сервис находится в разработке…"
+
+#: .\task_manager\templates\labels\create.html:7
+#: .\task_manager\templates\labels\create.html:13
+#: .\task_manager\templates\labels\list.html:14
+msgid "Create label"
+msgstr "Создать метку"
+
+#: .\task_manager\templates\labels\create.html:17
+#: .\task_manager\templates\statuses\create.html:17
+#: .\task_manager\templates\tasks\create.html:17
+msgid "Create"
+msgstr "Создать"
+
+#: .\task_manager\templates\labels\create.html:18
+#: .\task_manager\templates\labels\update.html:18
+#: .\task_manager\templates\statuses\create.html:18
+#: .\task_manager\templates\statuses\update.html:18
+#: .\task_manager\templates\tasks\create.html:18
+#: .\task_manager\templates\tasks\update.html:18
+#: .\task_manager\templates\users\update.html:18
+msgid "Cancel"
+msgstr "Отмена"
+
+#: .\task_manager\templates\labels\delete.html:7
+#: .\task_manager\templates\labels\delete.html:13
+msgid "Delete label"
+msgstr "Удаление метки"
+
+#: .\task_manager\templates\labels\delete.html:16
+#: .\task_manager\templates\statuses\delete.html:16
+#: .\task_manager\templates\tasks\delete.html:16
+#: .\task_manager\templates\users\delete.html:16
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: .\task_manager\templates\labels\delete.html:17
+#: .\task_manager\templates\statuses\delete.html:17
+#: .\task_manager\templates\tasks\delete.html:17
+#: .\task_manager\templates\users\delete.html:17
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: .\task_manager\templates\labels\delete.html:18
+#: .\task_manager\templates\statuses\delete.html:18
+#: .\task_manager\templates\tasks\delete.html:18
+#: .\task_manager\templates\users\delete.html:18
+msgid "No"
+msgstr "Нет"
+
+#: .\task_manager\templates\labels\list.html:20
+#: .\task_manager\templates\statuses\list.html:20
+#: .\task_manager\templates\tasks\list.html:32
+#: .\task_manager\templates\users\list.html:20
+msgid "Date of creation"
+msgstr "Дата создания"
+
+#: .\task_manager\templates\labels\list.html:33
+#: .\task_manager\templates\labels\update.html:17
+#: .\task_manager\templates\statuses\list.html:33
+#: .\task_manager\templates\statuses\update.html:17
+#: .\task_manager\templates\tasks\list.html:48
+#: .\task_manager\templates\tasks\task_info.html:40
+#: .\task_manager\templates\tasks\update.html:17
+#: .\task_manager\templates\users\list.html:34
+#: .\task_manager\templates\users\update.html:17
+msgid "Update"
+msgstr "Изменить"
+
+#: .\task_manager\templates\labels\list.html:34
+#: .\task_manager\templates\statuses\list.html:34
+#: .\task_manager\templates\tasks\list.html:49
+#: .\task_manager\templates\tasks\task_info.html:41
+#: .\task_manager\templates\users\list.html:35
+msgid "Delete"
+msgstr "Удалить"
+
+#: .\task_manager\templates\labels\list.html:40
+msgid "There is no any labels"
+msgstr "Ни одной метки не создано"
+
+#: .\task_manager\templates\labels\update.html:7
+#: .\task_manager\templates\labels\update.html:13
+msgid "Update label"
+msgstr "Изменение метки"
 
 #: .\task_manager\templates\login.html:6 .\task_manager\templates\login.html:12
 #: .\task_manager\templates\navbar.html:38
@@ -175,10 +288,6 @@ msgstr "Войти"
 #: .\task_manager\templates\users\list.html:13
 msgid "Users"
 msgstr "Пользователи"
-
-#: .\task_manager\templates\navbar.html:26
-msgid "Labels"
-msgstr "Метки"
 
 #: .\task_manager\templates\navbar.html:33
 msgid "Logout"
@@ -196,64 +305,10 @@ msgstr "Регистрация"
 msgid "Create status"
 msgstr "Создать статус"
 
-#: .\task_manager\templates\statuses\create.html:17
-#: .\task_manager\templates\tasks\create.html:17
-msgid "Create"
-msgstr "Создать"
-
-#: .\task_manager\templates\statuses\create.html:18
-#: .\task_manager\templates\statuses\update.html:18
-#: .\task_manager\templates\tasks\create.html:18
-#: .\task_manager\templates\tasks\update.html:18
-#: .\task_manager\templates\users\update.html:18
-msgid "Cancel"
-msgstr "Отмена"
-
 #: .\task_manager\templates\statuses\delete.html:7
 #: .\task_manager\templates\statuses\delete.html:13
 msgid "Delete status"
 msgstr "Удаление статуса"
-
-#: .\task_manager\templates\statuses\delete.html:16
-#: .\task_manager\templates\tasks\delete.html:16
-#: .\task_manager\templates\users\delete.html:16
-msgid "Are you sure you want to delete"
-msgstr "Вы уверены, что хотите удалить"
-
-#: .\task_manager\templates\statuses\delete.html:17
-#: .\task_manager\templates\tasks\delete.html:17
-#: .\task_manager\templates\users\delete.html:17
-msgid "Yes, delete"
-msgstr "Да, удалить"
-
-#: .\task_manager\templates\statuses\delete.html:18
-#: .\task_manager\templates\tasks\delete.html:18
-#: .\task_manager\templates\users\delete.html:18
-msgid "No"
-msgstr "Нет"
-
-#: .\task_manager\templates\statuses\list.html:20
-#: .\task_manager\templates\tasks\list.html:32
-#: .\task_manager\templates\users\list.html:20
-msgid "Date of creation"
-msgstr "Дата создания"
-
-#: .\task_manager\templates\statuses\list.html:33
-#: .\task_manager\templates\statuses\update.html:17
-#: .\task_manager\templates\tasks\list.html:48
-#: .\task_manager\templates\tasks\task_info.html:40
-#: .\task_manager\templates\tasks\update.html:17
-#: .\task_manager\templates\users\list.html:34
-#: .\task_manager\templates\users\update.html:17
-msgid "Update"
-msgstr "Изменить"
-
-#: .\task_manager\templates\statuses\list.html:34
-#: .\task_manager\templates\tasks\list.html:49
-#: .\task_manager\templates\tasks\task_info.html:41
-#: .\task_manager\templates\users\list.html:35
-msgid "Delete"
-msgstr "Удалить"
 
 #: .\task_manager\templates\statuses\list.html:40
 msgid "There is no any statuses"
@@ -327,23 +382,23 @@ msgstr "Нет зарегистрированных пользователей"
 msgid "Update user"
 msgstr "Изменение пользователя"
 
-#: .\task_manager\tests\test_users.py:84
+#: .\task_manager\tests\test_users.py:85
 msgid "Enter a valid username"
 msgstr "Введите правильное имя пользователя"
 
-#: .\task_manager\tests\test_users.py:98
+#: .\task_manager\tests\test_users.py:99
 msgid "This password is too short"
 msgstr "Введённый пароль слишком короткий"
 
-#: .\task_manager\tests\test_users.py:112
+#: .\task_manager\tests\test_users.py:113
 msgid "The two password fields didn’t match."
 msgstr "Введенные пароли не совпадают."
 
-#: .\task_manager\tests\test_users.py:152
+#: .\task_manager\tests\test_users.py:153
 msgid "User is successfully updated"
 msgstr "Пользователь успешно изменен"
 
-#: .\task_manager\tests\test_users.py:196
+#: .\task_manager\tests\test_users.py:231
 msgid "User is successfully deleted"
 msgstr "Пользователь успешно удален"
 

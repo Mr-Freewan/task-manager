@@ -57,8 +57,7 @@ class TestTasksListView(TaskTestCase):
 
         self.assertInHTML(f'<td {tag_class}>{valid_task["id"]}</td>',
                           page)
-        self.assertInHTML(f'<td {tag_class}>{valid_task["name"]}</td>',
-                          page)
+        self.assertInHTML(valid_task["name"], page)
         self.assertInHTML(f'<td {tag_class}>{valid_task["author"]}</td>',
                           page)
         self.assertInHTML(f'<td {tag_class}>{valid_task["executor"]}</td>',
@@ -166,7 +165,8 @@ class TestTaskDeleteView(TaskTestCase):
 
     def test_delete_task_not_author(self):
         response = self.client.post(
-            reverse_lazy('task_delete', kwargs={'pk': 2}))
+            reverse_lazy('task_delete', kwargs={'pk': 2})
+        )
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
@@ -180,7 +180,8 @@ class TestTaskDeleteView(TaskTestCase):
 
     def test_delete_task(self):
         response = self.client.post(
-            reverse_lazy('task_delete', kwargs={'pk': 1}))
+            reverse_lazy('task_delete', kwargs={'pk': 1})
+        )
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)
@@ -194,3 +195,31 @@ class TestTaskDeleteView(TaskTestCase):
         self.assertEqual(messages[0].message,
                          _('Task deleted successfully'))
         self.assertEqual(messages[0].level, 25)
+
+
+class TestTaskPageView(TaskTestCase):
+    def test_task_page_if_unauthorized(self):
+        self.client.logout()
+        response = self.client.get(
+            reverse_lazy('task_info', kwargs={'pk': 1})
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse_lazy('login'))
+
+    def test_task_page_view(self):
+        task_data = self.test_tasks['list']
+        response = self.client.get(
+            reverse_lazy('task_info', kwargs={'pk': 1})
+        )
+        page = str(response.content)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, template_name='tasks/task_info.html')
+
+        self.assertInHTML(task_data['name'], page)
+        self.assertInHTML(task_data['description'], page)
+        self.assertInHTML(task_data['author'], page)
+        self.assertInHTML(task_data['executor'], page)
+        self.assertInHTML(task_data['created_at'], page)
+

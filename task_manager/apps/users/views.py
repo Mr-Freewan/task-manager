@@ -56,7 +56,7 @@ class UserDeleteView(AuthenticateMixin,
     permission_url = 'users_list'
 
     rejection_message = _('Unable to delete user because it is in use')
-    rejection_next_url = reverse_lazy('users_list')
+    rejection_url = reverse_lazy('users_list')
 
     def post(self, request, *args, **kwargs):
         return super().post(request, *args, **kwargs)

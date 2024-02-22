@@ -45,8 +45,8 @@
                         <td class="align-middle">{{ task.executor }}</td>
                         <td class="align-middle">{{ task.created_at|date:"d.m.Y H:i" }}</td>
                         <td align="right">
-                            <a href="{% url 'task_update' task.pk %}" class="btn btn-outline-dark btn-sm" role="button">{% translate 'Update' %}</a>
-                            <a href="{% url 'task_delete' task.pk %}" class="btn btn-outline-danger btn-sm mx-2" role="button">{% translate 'Delete' %}</a>
+                            <a href="{% url 'task_update' task.pk %}" class="btn btn-outline-dark btn-sm align-middle" role="button">{% translate 'Update' %}</a>
+                            <a href="{% url 'task_delete' task.pk %}" class="btn btn-outline-danger btn-sm mx-2 align-middle" role="button">{% translate 'Delete' %}</a>
                         </td>
                     </tr>
                 {% endfor %}

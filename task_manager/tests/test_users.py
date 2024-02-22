@@ -52,6 +52,7 @@ class TestUsersListView(UserTestCase):
         self.assertInHTML(self.user_2.username, page)
         self.assertInHTML(self.user_3.username, page)
 
+
 class TestUserCreateView(UserTestCase):
 
     def test_create_view(self):

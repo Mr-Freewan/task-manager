@@ -1,0 +1,13 @@
+{
+  "create": {
+      "name": "Simple"
+  },
+  "update": {
+    "name": "Big"
+  },
+  "list": {
+    "id": "1",
+    "name": "Important",
+    "created_at": "06.02.2024 21:47"
+  }
+}

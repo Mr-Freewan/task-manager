@@ -1,0 +1,26 @@
+[
+  {
+    "model": "labels.label",
+    "pk": 1,
+    "fields": {
+      "name": "Important",
+      "created_at": "2024-02-06T21:47:03.434Z"
+    }
+  },
+  {
+    "model": "labels.label",
+    "pk": 2,
+    "fields": {
+      "name": "Not important",
+      "created_at": "2024-02-07T21:47:03.434Z"
+    }
+  },
+  {
+    "model": "labels.label",
+    "pk": 3,
+    "fields": {
+      "name": "Hard",
+      "created_at": "2024-02-08T21:47:03.434Z"
+    }
+  }
+]

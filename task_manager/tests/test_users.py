@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.messages import get_messages
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models.deletion import ProtectedError
 from django.test import TestCase, Client
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -9,7 +10,7 @@ from task_manager.load_data import from_json
 
 
 class UserTestCase(TestCase):
-    fixtures = ['users.json']
+    fixtures = ['users.json', 'tasks.json', 'statuses.json']
     test_users = from_json('test_users.json')
 
     def setUp(self):
@@ -178,25 +179,6 @@ class TestUserDeleteView(UserTestCase):
                          _('You are not logged in! Please log in.'))
         self.assertEqual(messages[0].level, 40)
 
-    def test_delete_self(self):
-        self.client.force_login(self.user_3)
-        response = self.client.post(
-            reverse_lazy('user_delete', kwargs={'pk': 3})
-        )
-        messages = list(get_messages(response.wsgi_request))
-
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, reverse_lazy('users_list'))
-        self.assertEqual(get_user_model().objects.count(),
-                         self.users_count - 1)
-        with self.assertRaises(ObjectDoesNotExist):
-            get_user_model().objects.get(pk=self.user_3.pk)
-
-        self.assertEqual(len(messages), 1)
-        self.assertEqual(messages[0].message,
-                         _('User is successfully deleted'))
-        self.assertEqual(messages[0].level, 25)
-
     def test_delete_another(self):
         self.client.force_login(self.user_2)
         response = self.client.post(
@@ -214,3 +196,38 @@ class TestUserDeleteView(UserTestCase):
         self.assertEqual(messages[0].message,
                          _('You have no rights to change another user.'))
         self.assertEqual(messages[0].level, 40)
+
+    def test_delete_user_if_in_use(self):
+        self.client.force_login(self.user_1)
+        response = self.client.post(
+                reverse_lazy('user_delete', kwargs={'pk': 1})
+            )
+
+        messages = list(get_messages(response.wsgi_request))
+
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse_lazy('users_list'))
+
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(messages[0].message,
+                         _('Unable to delete user because it is in use'))
+        self.assertEqual(messages[0].level, 40)
+
+    def test_delete_self(self):
+        self.client.force_login(self.user_2)
+        response = self.client.post(
+            reverse_lazy('user_delete', kwargs={'pk': 2})
+        )
+        messages = list(get_messages(response.wsgi_request))
+
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse_lazy('users_list'))
+        self.assertEqual(get_user_model().objects.count(),
+                         self.users_count - 1)
+        with self.assertRaises(ObjectDoesNotExist):
+            get_user_model().objects.get(pk=self.user_2.pk)
+
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(messages[0].message,
+                         _('User is successfully deleted'))
+        self.assertEqual(messages[0].level, 25)

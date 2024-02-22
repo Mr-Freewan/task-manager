@@ -53,7 +53,7 @@ class UserDeleteView(AuthenticateMixin,
     success_message = _('User has been deleted successfully')
 
     permission_message = _('You have no rights to change another user.')
-    permission_url = 'users_list'
+    permission_url = reverse_lazy('users_list')
 
     rejection_message = _('Unable to delete user because it is in use')
     rejection_url = reverse_lazy('users_list')

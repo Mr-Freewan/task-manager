@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.contrib.messages import get_messages
 from django.core.exceptions import ObjectDoesNotExist
-from django.db.models.deletion import ProtectedError
 from django.test import TestCase, Client
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -200,8 +199,8 @@ class TestUserDeleteView(UserTestCase):
     def test_delete_user_if_in_use(self):
         self.client.force_login(self.user_1)
         response = self.client.post(
-                reverse_lazy('user_delete', kwargs={'pk': 1})
-            )
+            reverse_lazy('user_delete', kwargs={'pk': 1})
+        )
 
         messages = list(get_messages(response.wsgi_request))
 

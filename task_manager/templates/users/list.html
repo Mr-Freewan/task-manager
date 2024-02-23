@@ -12,35 +12,34 @@
 {% block content %}
 <h1 class="my-4">{% translate 'Users' %}</h1>
 <table class="table table-hover">
-        <thead>
+    <thead>
+        <tr>
+            <th class="col-1">ID</th>
+            <th class="col-3">{% translate 'User name' %}</th>
+            <th class="col-3">{% translate 'Full name' %}</th>
+            <th class="col-2">{% translate 'Date of creation' %}</th>
+            <th class="col-3"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if users %}
+            {% for user in users %}
             <tr>
-                <th class="col-1">ID</th>
-                <th class="col-3">{% translate 'User name' %}</th>
-                <th class="col-3">{% translate 'Full name' %}</th>
-                <th class="col-2">{% translate 'Date of creation' %}</th>
-                <th class="col-3"></th>
+                <td class="align-middle">{{ user.pk }}</td>
+                <td class="align-middle">{{ user.username }}</td>
+                <td class="align-middle">{{ user.first_name }} {{ user.last_name }}</td>
+                <td class="align-middle">{{ user.date_joined|date:"d.m.Y H:i" }}</td>
+                <td align="right">
+                    <a href="{% url 'user_update' user.pk %}" class="btn btn-outline-dark btn-sm" role="button">{% translate 'Update' %}</a>
+                    <a href="{% url 'user_delete' user.pk %}" class="btn btn-outline-danger btn-sm mx-2" role="button">{% translate 'Delete' %}</a>
+                </td>
             </tr>
-        </thead>
-
-        <tbody>
-            {% if users %}
-                {% for user in users %}
-                    <tr>
-                        <td class="align-middle">{{ user.pk }}</td>
-                        <td class="align-middle">{{ user.username }}</td>
-                        <td class="align-middle">{{ user.first_name }} {{ user.last_name }}</td>
-                        <td class="align-middle">{{ user.date_joined|date:"d.m.Y H:i" }}</td>
-                        <td align="right">
-                            <a href="{% url 'user_update' user.pk %}" class="btn btn-outline-dark btn-sm" role="button">{% translate 'Update' %}</a>
-                            <a href="{% url 'user_delete' user.pk %}" class="btn btn-outline-danger btn-sm mx-2" role="button">{% translate 'Delete' %}</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                    <tr>
-                        <td colspan="5" align="center">{% translate 'There is no any registered users' %}</td>
-                    </tr>
-            {% endif %}
-        </tbody>
-    </table>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5" align="center">{% translate 'There is no any registered users' %}</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
 {% endblock %}

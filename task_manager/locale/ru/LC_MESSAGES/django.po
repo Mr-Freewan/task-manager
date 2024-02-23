@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-23 08:14+0500\n"
+"POT-Creation-Date: 2024-02-23 08:40+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,12 +198,16 @@ msgstr "Указанной страницы не существует"
 msgid "Return to main page"
 msgstr "На главную"
 
+#: .\task_manager\templates\base_template.html:14
+msgid "Simple task manager"
+msgstr "Простой менеджер задач"
+
 #: .\task_manager\templates\index.html:9 .\task_manager\templates\index.html:16
 #: .\task_manager\templates\navbar.html:16
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: .\task_manager\templates\index.html:17
+#: .\task_manager\templates\index.html:18
 msgid "Simple and flexible open source task management web application"
 msgstr "Простое и гибкое веб-приложение с открытым исходным кодом"
 

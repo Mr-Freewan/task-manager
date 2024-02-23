@@ -13,48 +13,47 @@
 <h1 class="my-4">{% translate 'Tasks' %}</h1>
 <a href="{% url 'task_create' %}" class="btn btn-outline-dark mb-4" role="button">{% translate 'Create task' %}</a>
 <div class="card mb-3">
-            <div class="card-body bg-light">
-                <form class="form-inline center" method="get">
-                  {% bootstrap_form filter.form %}
-                  <button class="btn btn-outline-dark mt-3" type="submit">{% translate 'Show' %}</button>
-                  <a href="{% url 'tasks_list' %}" class="btn btn-outline-danger mt-3 mx-3" role="button">{% translate 'Clear' %}</a>
-                </form>
-            </div>
-        </div>
+    <div class="card-body bg-light">
+        <form class="form-inline center" method="get">
+          {% bootstrap_form filter.form %}
+          <button class="btn btn-outline-dark mt-3" type="submit">{% translate 'Show' %}</button>
+          <a href="{% url 'tasks_list' %}" class="btn btn-outline-danger mt-3 mx-3" role="button">{% translate 'Clear' %}</a>
+        </form>
+    </div>
+</div>
 <table class="table table-hover">
-        <thead>
+    <thead>
+        <tr>
+            <th class="col-1" >ID</th>
+            <th class="col-3">{% translate 'Name' %}</th>
+            <th class="col-1">{% translate 'Status' %}</th>
+            <th class="col-1">{% translate 'Author' %}</th>
+            <th class="col-1">{% translate 'Executor' %}</th>
+            <th class="col-2">{% translate 'Date of creation' %}</th>
+            <th class="col-2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if tasks %}
+            {% for task in tasks %}
             <tr>
-                <th class="col-1" >ID</th>
-                <th class="col-3">{% translate 'Name' %}</th>
-                <th class="col-1">{% translate 'Status' %}</th>
-                <th class="col-1">{% translate 'Author' %}</th>
-                <th class="col-1">{% translate 'Executor' %}</th>
-                <th class="col-2">{% translate 'Date of creation' %}</th>
-                <th class="col-2"></th>
+                <td class="align-middle">{{ task.pk }}</td>
+                <td class="align-middle"><a href="{% url 'task_info' task.pk %}">{{ task.name }}</a></td>
+                <td class="align-middle">{{ task.status }}</td>
+                <td class="align-middle">{{ task.author }}</td>
+                <td class="align-middle">{{ task.executor }}</td>
+                <td class="align-middle">{{ task.created_at|date:"d.m.Y H:i" }}</td>
+                <td align="right">
+                    <a href="{% url 'task_update' task.pk %}" class="btn btn-outline-dark btn-sm align-middle" role="button">{% translate 'Update' %}</a>
+                    <a href="{% url 'task_delete' task.pk %}" class="btn btn-outline-danger btn-sm mx-2 align-middle" role="button">{% translate 'Delete' %}</a>
+                </td>
             </tr>
-        </thead>
-
-        <tbody>
-            {% if tasks %}
-                {% for task in tasks %}
-                    <tr>
-                        <td class="align-middle">{{ task.pk }}</td>
-                        <td class="align-middle"><a href="{% url 'task_info' task.pk %}">{{ task.name }}</a></td>
-                        <td class="align-middle">{{ task.status }}</td>
-                        <td class="align-middle">{{ task.author }}</td>
-                        <td class="align-middle">{{ task.executor }}</td>
-                        <td class="align-middle">{{ task.created_at|date:"d.m.Y H:i" }}</td>
-                        <td align="right">
-                            <a href="{% url 'task_update' task.pk %}" class="btn btn-outline-dark btn-sm align-middle" role="button">{% translate 'Update' %}</a>
-                            <a href="{% url 'task_delete' task.pk %}" class="btn btn-outline-danger btn-sm mx-2 align-middle" role="button">{% translate 'Delete' %}</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            {% else %}
-                    <tr>
-                        <td colspan="7" align="center">{% translate 'There is no any tasks' %}</td>
-                    </tr>
-            {% endif %}
-        </tbody>
-    </table>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="7" align="center">{% translate 'There is no any tasks' %}</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
 {% endblock %}

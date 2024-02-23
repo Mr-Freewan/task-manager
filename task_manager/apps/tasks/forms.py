@@ -1,9 +1,15 @@
 from django.forms import ModelForm
-from .models import Task
+
+from task_manager.apps.tasks.models import Task
 
 
 class TaskForm(ModelForm):
-
     class Meta:
         model = Task
-        fields = ('name', 'description', 'status', 'executor')
+        fields = (
+            'name',
+            'description',
+            'status',
+            'executor',
+            'labels'
+        )

@@ -35,6 +35,14 @@
         <div class="col">{% translate 'Created at' %}</div>
         <div class="col">{{ task.created_at|date:"d.m.Y H:i" }}</div>
       </div>
+      <div class="row p-1">
+        <div class="col">{% translate 'Labels' %}</div>
+        <div class="col">
+        {% for label in task.labels.all %}
+            <p class="btn btn-secondary btn-sm">{{ label.name }}</p>
+        {% endfor %}
+        </div>
+      </div>
       </div>
     <hr>
           <a href="{% url 'task_update' task.pk %}" class="btn btn-dark mt-3" role="button">{% translate 'Update' %}</a>

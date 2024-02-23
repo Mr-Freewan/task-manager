@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-23 05:06+0500\n"
+"POT-Creation-Date: 2024-02-23 08:14+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,21 +51,22 @@ msgid "Labels"
 msgstr "Метки"
 
 #: .\task_manager\apps\labels\views.py:21
-#: .\task_manager\tests\test_labels.py:96
+#: .\task_manager\tests\test_labels.py:99
 msgid "Label created successfully"
 msgstr "Метка успешно создана"
 
 #: .\task_manager\apps\labels\views.py:29
-#: .\task_manager\tests\test_labels.py:134
+#: .\task_manager\tests\test_labels.py:137
 msgid "Label updated successfully"
 msgstr "Метка успешно изменена"
 
 #: .\task_manager\apps\labels\views.py:37
-#: .\task_manager\tests\test_labels.py:187
+#: .\task_manager\tests\test_labels.py:189
 msgid "Label deleted successfully"
 msgstr "Метка успешно удалена"
 
 #: .\task_manager\apps\labels\views.py:39
+#: .\task_manager\tests\test_labels.py:171
 msgid "Unable to delete label because it is in use"
 msgstr "Невозможно удалить метку, потому что она используется"
 
@@ -94,11 +95,12 @@ msgid "Status updated successfully"
 msgstr "Статус успешно изменен"
 
 #: .\task_manager\apps\statuses\views.py:38
-#: .\task_manager\tests\test_statuses.py:171
+#: .\task_manager\tests\test_statuses.py:186
 msgid "Status deleted successfully"
 msgstr "Статус успешно удален"
 
 #: .\task_manager\apps\statuses\views.py:39
+#: .\task_manager\tests\test_statuses.py:168
 msgid "Unable to delete status because it is in use"
 msgstr "Невозможно удалить статус, потому что он используется"
 
@@ -133,19 +135,19 @@ msgstr "Задачи"
 msgid "Tasks"
 msgstr "Задачи"
 
-#: .\task_manager\apps\tasks\views.py:32 .\task_manager\tests\test_tasks.py:104
+#: .\task_manager\apps\tasks\views.py:32 .\task_manager\tests\test_tasks.py:110
 msgid "Task created successfully"
 msgstr "Задача успешно создана"
 
-#: .\task_manager\apps\tasks\views.py:44 .\task_manager\tests\test_tasks.py:144
+#: .\task_manager\apps\tasks\views.py:44 .\task_manager\tests\test_tasks.py:150
 msgid "Task updated successfully"
 msgstr "Задача успешно изменена"
 
-#: .\task_manager\apps\tasks\views.py:52 .\task_manager\tests\test_tasks.py:196
+#: .\task_manager\apps\tasks\views.py:52 .\task_manager\tests\test_tasks.py:202
 msgid "Task deleted successfully"
 msgstr "Задача успешно удалена"
 
-#: .\task_manager\apps\tasks\views.py:53 .\task_manager\tests\test_tasks.py:178
+#: .\task_manager\apps\tasks\views.py:53 .\task_manager\tests\test_tasks.py:184
 msgid "Only the author of the task can delete it"
 msgstr "Задачу может удалить только ее автор"
 
@@ -174,13 +176,13 @@ msgstr "У вас нет прав для изменения другого по�
 msgid "User has been deleted successfully"
 msgstr "Пользователь успешно удален"
 
-#: .\task_manager\apps\users\views.py:58 .\task_manager\tests\test_users.py:212
+#: .\task_manager\apps\users\views.py:58 .\task_manager\tests\test_users.py:211
 msgid "Unable to delete user because it is in use"
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
-#: .\task_manager\mixins.py:12 .\task_manager\tests\test_labels.py:37
+#: .\task_manager\mixins.py:12 .\task_manager\tests\test_labels.py:40
 #: .\task_manager\tests\test_statuses.py:37
-#: .\task_manager\tests\test_tasks.py:43 .\task_manager\tests\test_users.py:178
+#: .\task_manager\tests\test_tasks.py:48 .\task_manager\tests\test_users.py:178
 msgid "You are not logged in! Please log in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
@@ -196,18 +198,14 @@ msgstr "Указанной страницы не существует"
 msgid "Return to main page"
 msgstr "На главную"
 
-#: .\task_manager\templates\index.html:9
+#: .\task_manager\templates\index.html:9 .\task_manager\templates\index.html:16
 #: .\task_manager\templates\navbar.html:16
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: .\task_manager\templates\index.html:16
-msgid "Hi! =)"
-msgstr "Привет!"
-
 #: .\task_manager\templates\index.html:17
-msgid "The service is under development now…"
-msgstr "Сейчас сервис находится в разработке…"
+msgid "Simple and flexible open source task management web application"
+msgstr "Простое и гибкое веб-приложение с открытым исходным кодом"
 
 #: .\task_manager\templates\labels\create.html:7
 #: .\task_manager\templates\labels\create.html:13
@@ -417,7 +415,7 @@ msgstr "Введенные пароли не совпадают."
 msgid "User is successfully updated"
 msgstr "Пользователь успешно изменен"
 
-#: .\task_manager\tests\test_users.py:231
+#: .\task_manager\tests\test_users.py:230
 msgid "User is successfully deleted"
 msgstr "Пользователь успешно удален"
 
@@ -428,3 +426,9 @@ msgstr "Вы залогинены"
 #: .\task_manager\views.py:25
 msgid "You are logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Hi! =)"
+#~ msgstr "Привет!"
+
+#~ msgid "The service is under development now…"
+#~ msgstr "Сейчас сервис находится в разработке…"

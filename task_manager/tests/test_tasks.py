@@ -4,10 +4,10 @@ from django.test import TestCase, Client
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
+from task_manager.apps.labels.models import Label
 from task_manager.apps.statuses.models import Status
 from task_manager.apps.tasks.models import Task
 from task_manager.apps.users.models import User
-from task_manager.apps.labels.models import Label
 from task_manager.load_data import from_json
 
 
@@ -230,5 +230,3 @@ class TestTaskPageView(TaskTestCase):
         self.assertInHTML(task_data['created_at'], page)
         self.assertInHTML(task_data['labels'][0], page)
         self.assertInHTML(task_data['labels'][1], page)
-
-

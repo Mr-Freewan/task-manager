@@ -6,8 +6,8 @@ from django.views.generic import CreateView, DeleteView
 from django.views.generic import ListView, UpdateView
 
 from task_manager.apps.users.forms import UserForm, UpdateUserForm
-from task_manager.mixins import AuthenticateMixin, PermissionMixin, \
-    DeleteProtectionMixin
+from task_manager.mixins import (AuthenticateMixin, PermissionMixin,
+                                 DeleteProtectionMixin)
 
 
 class UsersView(ListView):

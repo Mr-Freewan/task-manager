@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from .models import Status
+from task_manager.apps.statuses.models import Status
 
 admin.site.register(Status)

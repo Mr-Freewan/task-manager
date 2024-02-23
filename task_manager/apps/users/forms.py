@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext as _
 
-from .models import User
+from task_manager.apps.users.models import User
 
 
 class UserForm(UserCreationForm):

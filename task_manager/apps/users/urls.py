@@ -1,6 +1,7 @@
 from django.urls import path
 
-from .views import UsersView, UserCreateView, UserUpdateView, UserDeleteView
+from task_manager.apps.users.views import (UsersView, UserCreateView,
+                                           UserUpdateView, UserDeleteView)
 
 urlpatterns = [
     path('', UsersView.as_view(), name='users_list'),

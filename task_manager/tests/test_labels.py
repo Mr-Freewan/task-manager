@@ -6,21 +6,24 @@ from django.utils.translation import gettext_lazy as _
 
 from task_manager.apps.labels.models import Label
 from task_manager.apps.users.models import User
+from task_manager.apps.tasks.models import Task
 from task_manager.load_data import from_json
 
 
 class LabelTestCase(TestCase):
-    fixtures = ['users.json', 'labels.json']
+    fixtures = ['users.json', 'labels.json', 'tasks.json', 'statuses.json']
     test_labels = from_json('test_labels.json')
 
     def setUp(self):
         self.client = Client()
         self.user = User.objects.get(pk=1)
+        self.task = Task.objects.get(pk=1)
         self.client.force_login(self.user)
         self.label_1 = Label.objects.get(pk=1)
         self.label_2 = Label.objects.get(pk=2)
         self.label_3 = Label.objects.get(pk=3)
         self.count = Label.objects.count()
+        self.task.labels.set([self.label_1, self.label_2])
 
 
 class TestLabelsListView(LabelTestCase):
@@ -152,6 +155,21 @@ class TestLabelDeleteView(LabelTestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name='labels/delete.html')
+
+    def test_delete_label_if_in_use(self):
+        response = self.client.post(
+            reverse_lazy('label_delete', kwargs={'pk': 1})
+        )
+
+        messages = list(get_messages(response.wsgi_request))
+
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse_lazy('labels_list'))
+
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(messages[0].message,
+                         _('Unable to delete label because it is in use'))
+        self.assertEqual(messages[0].level, 40)
 
     def test_delete_label(self):
         response = self.client.post(

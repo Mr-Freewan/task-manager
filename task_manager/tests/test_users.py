@@ -201,7 +201,6 @@ class TestUserDeleteView(UserTestCase):
         response = self.client.post(
             reverse_lazy('user_delete', kwargs={'pk': 1})
         )
-
         messages = list(get_messages(response.wsgi_request))
 
         self.assertEqual(response.status_code, 302)

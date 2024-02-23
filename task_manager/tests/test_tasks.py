@@ -7,11 +7,12 @@ from django.utils.translation import gettext_lazy as _
 from task_manager.apps.statuses.models import Status
 from task_manager.apps.tasks.models import Task
 from task_manager.apps.users.models import User
+from task_manager.apps.labels.models import Label
 from task_manager.load_data import from_json
 
 
 class TaskTestCase(TestCase):
-    fixtures = ['users.json', 'statuses.json', 'tasks.json']
+    fixtures = ['users.json', 'statuses.json', 'tasks.json', 'labels.json']
     test_tasks = from_json('test_tasks.json')
 
     def setUp(self):
@@ -24,7 +25,11 @@ class TaskTestCase(TestCase):
         self.status_1 = Status.objects.get(pk=1)
         self.status_2 = Status.objects.get(pk=2)
 
+        self.label_1 = Label.objects.get(pk=1)
+        self.label_2 = Label.objects.get(pk=2)
+
         self.task_1 = Task.objects.get(pk=1)
+        self.task_1.labels.set([self.label_1, self.label_2])
         self.task_2 = Task.objects.get(pk=2)
         self.tasks_count = Task.objects.count()
 
@@ -57,6 +62,7 @@ class TestTasksListView(TaskTestCase):
 
         self.assertInHTML(f'<td {tag_class}>{valid_task["id"]}</td>',
                           page)
+        self.assertIn(valid_task["url"], page)
         self.assertInHTML(valid_task["name"], page)
         self.assertInHTML(f'<td {tag_class}>{valid_task["author"]}</td>',
                           page)
@@ -222,4 +228,7 @@ class TestTaskPageView(TaskTestCase):
         self.assertInHTML(task_data['author'], page)
         self.assertInHTML(task_data['executor'], page)
         self.assertInHTML(task_data['created_at'], page)
+        self.assertInHTML(task_data['labels'][0], page)
+        self.assertInHTML(task_data['labels'][1], page)
+
 

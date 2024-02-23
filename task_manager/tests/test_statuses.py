@@ -10,7 +10,7 @@ from task_manager.load_data import from_json
 
 
 class StatusTestCase(TestCase):
-    fixtures = ['users.json', 'statuses.json']
+    fixtures = ['users.json', 'tasks.json', 'statuses.json']
     test_statuses = from_json('test_statuses.json')
 
     def setUp(self):
@@ -153,9 +153,24 @@ class TestStatusDeleteView(StatusTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name='statuses/delete.html')
 
-    def test_delete_status(self):
+    def test_delete_status_if_in_use(self):
         response = self.client.post(
             reverse_lazy('status_delete', kwargs={'pk': 3})
+        )
+
+        messages = list(get_messages(response.wsgi_request))
+
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse_lazy('statuses_list'))
+
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(messages[0].message,
+                         _('Unable to delete status because it is in use'))
+        self.assertEqual(messages[0].level, 40)
+
+    def test_delete_status(self):
+        response = self.client.post(
+            reverse_lazy('status_delete', kwargs={'pk': 1})
         )
         messages = list(get_messages(response.wsgi_request))
 
@@ -164,7 +179,7 @@ class TestStatusDeleteView(StatusTestCase):
 
         self.assertEqual(Status.objects.count(), self.count - 1)
         with self.assertRaises(ObjectDoesNotExist):
-            Status.objects.get(pk=self.status_3.pk)
+            Status.objects.get(pk=self.status_1.pk)
 
         self.assertEqual(len(messages), 1)
         self.assertEqual(messages[0].message,

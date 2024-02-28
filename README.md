@@ -14,7 +14,7 @@ and [Django](https://www.djangoproject.com/) framework. It allows you to set
 tasks, assign executors and change their statuses. Registration and
 authentication are required to work with the system.
 
-Demo app is [HERE](https://task-manager-ieeg.onrender.com/).
+Demo app is [HERE](https://task-manager-ieeg.onrender.com/) (Requests can be delayed about 50 seconds or more).
 
 ### Features
 

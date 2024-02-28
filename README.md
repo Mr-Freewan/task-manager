@@ -29,15 +29,15 @@ Demo app is [HERE](https://task-manager-ieeg.onrender.com/) (Requests can be del
 
 This project was built using these tools:
 
-| Tool                                                            | Description                                                                                                  |
-|-----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| [Dgango](https://www.djangoproject.com/)                        | "Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design." |
-| [Poetry](https://python-poetry.org/)                            | "Python dependency management and packaging made easy"                                                       |
-| [Flake8](https://flake8.pycqa.org/)                             | "Your tool for style guide enforcement"                                                                      | 
-| [Bootstrap](https://getbootstrap.com/)                          | "Powerful, extensible, and feature-packed frontend toolkit."                                                 |   
-| [PostgreSQL](https://www.postgresql.org/)                       | "The World's Most Advanced Open Source Relational Database"                                                  |
-| [Gunicorn](https://gunicorn.org/)                               | "WSGI HTTP Server for UNIX"                                                                                  | 
-| [Whitenoise](http://whitenoise.evans.io/en/latest/)             | "Radically simplified static file serving for Python web apps"                                                                                  | 
+| Tool                                                | Description                                                                                                  |
+|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| [Django](https://www.djangoproject.com/)            | "Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design." |
+| [Poetry](https://python-poetry.org/)                | "Python dependency management and packaging made easy"                                                       |
+| [Flake8](https://flake8.pycqa.org/)                 | "Your tool for style guide enforcement"                                                                      | 
+| [Bootstrap](https://getbootstrap.com/)              | "Powerful, extensible, and feature-packed frontend toolkit."                                                 |   
+| [PostgreSQL](https://www.postgresql.org/)           | "The World's Most Advanced Open Source Relational Database"                                                  |
+| [Gunicorn](https://gunicorn.org/)                   | "WSGI HTTP Server for UNIX"                                                                                  | 
+| [Whitenoise](http://whitenoise.evans.io/en/latest/) | "Radically simplified static file serving for Python web apps"                                                                                  | 
 
 ---
 
@@ -54,7 +54,7 @@ This project was built using these tools:
 
 Clone the project:
 
-    git clone https://github.com/Mr-Freewan/python-project-52.git && cd python-project-52
+    git clone https://github.com/Mr-Freewan/task-manager.git && cd task-manager
 
 Then install dependencies:
 
